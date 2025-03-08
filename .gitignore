@@ -1,3 +1,9 @@
 target/
 logs/
 .idea/
+*.class
+*.log
+*.idea/
+*.target/
+target/
+.idea/
