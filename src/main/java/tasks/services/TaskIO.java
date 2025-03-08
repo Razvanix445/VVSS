@@ -20,7 +20,18 @@ public class TaskIO {
     private static final int secondsInMin = 60;
 
     private static final Logger log = Logger.getLogger(TaskIO.class.getName());
+
     public static void write(TaskList tasks, OutputStream out) throws IOException {
+        if (tasks == null) {
+            log.error("Null task list provided to write");
+            throw new IllegalArgumentException("Task list cannot be null");
+        }
+
+        if (out == null) {
+            log.error("Null output stream provided to write");
+            throw new IllegalArgumentException("Output stream cannot be null");
+        }
+
         DataOutputStream dataOutputStream = new DataOutputStream(out);
         try {
             dataOutputStream.writeInt(tasks.size());
@@ -68,39 +79,39 @@ public class TaskIO {
             dataInputStream.close();
         }
     }
-    public static void writeBinary(TaskList tasks, File file)throws IOException{
-        FileOutputStream fos = null;
+    public static void writeBinary(TaskList tasks, File file) throws IOException{
+        FileOutputStream outputStream = null;
         try {
-            fos = new FileOutputStream(file);
-            write(tasks,fos);
+            outputStream = new FileOutputStream(file);
+            write(tasks, outputStream);
         }
         catch (IOException e){
             log.error("IO exception reading or writing file");
         }
         finally {
-            fos.close();
+            outputStream.close();
         }
     }
 
     public static void readBinary(TaskList tasks, File file) throws IOException{
-        FileInputStream fis = null;
+        FileInputStream inputStream = null;
         try {
-            fis = new FileInputStream(file);
-            read(tasks, fis);
+            inputStream = new FileInputStream(file);
+            read(tasks, inputStream);
         }
         catch (IOException e){
             log.error("IO exception reading or writing file");
         }
         finally {
-            fis.close();
+            inputStream.close();
         }
     }
     public static void write(TaskList tasks, Writer out) throws IOException {
         BufferedWriter bufferedWriter = new BufferedWriter(out);
         Task lastTask = tasks.getTask(tasks.size()-1);
-        for (Task t : tasks){
-            bufferedWriter.write(getFormattedTask(t));
-            bufferedWriter.write(t.equals(lastTask) ? ';' : '.');
+        for (Task task : tasks){
+            bufferedWriter.write(getFormattedTask(task));
+            bufferedWriter.write(task.equals(lastTask) ? ';' : '.');
             bufferedWriter.newLine();
         }
         bufferedWriter.close();
@@ -110,10 +121,10 @@ public class TaskIO {
     public static void read(TaskList tasks, Reader in)  throws IOException {
         BufferedReader reader = new BufferedReader(in);
         String line;
-        Task t;
+        Task task;
         while ((line = reader.readLine()) != null){
-            t = getTaskFromString(line);
-            tasks.add(t);
+            task = getTaskFromString(line);
+            tasks.add(task);
         }
         reader.close();
 
@@ -123,7 +134,7 @@ public class TaskIO {
         try {
             write(tasks, fileWriter);
         }
-        catch (IOException e ){
+        catch (IOException e){
             log.error("IO exception reading or writing file");
         }
         finally {
@@ -188,18 +199,18 @@ public class TaskIO {
         }
 
         int result = 0;
-        for (int p = 0; p < timeEntities.length; p++){
-            if (timeEntities[p] != 0 && p == 0){
-                result+=secondsInDay*timeEntities[p];
+        for (int position = 0; position < timeEntities.length; position++){
+            if (timeEntities[position] != 0 && position == 0){
+                result+=secondsInDay*timeEntities[position];
             }
-            if (timeEntities[p] != 0 && p == 1){
-                result+=secondsInHour*timeEntities[p];
+            if (timeEntities[position] != 0 && position == 1){
+                result+=secondsInHour*timeEntities[position];
             }
-            if (timeEntities[p] != 0 && p == 2){
-                result+=secondsInMin*timeEntities[p];
+            if (timeEntities[position] != 0 && position == 2){
+                result+=secondsInMin*timeEntities[position];
             }
-            if (timeEntities[p] != 0 && p == 3){
-                result+=timeEntities[p];
+            if (timeEntities[position] != 0 && position == 3){
+                result+=timeEntities[position];
             }
         }
         return result;
