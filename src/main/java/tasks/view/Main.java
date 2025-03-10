@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     public static Stage primaryStage;
-    private static final int defaultWidth = 820;
+    private static final int DEFAULTWIDTH = 820;
     private static final int defaultHeight = 520;
     private static final Logger log = Logger.getLogger(Main.class.getName());
 
@@ -27,7 +27,7 @@ public class Main extends Application {
     private static ClassLoader classLoader = Main.class.getClassLoader();
     public static File savedTasksFile = new File("data/tasks.txt");
 
-    private TasksService service = new TasksService(savedTasksList);//savedTasksList);
+    private TasksService service = new TasksService(savedTasksList);
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -45,8 +45,8 @@ public class Main extends Application {
 
             ctrl.setService(service);
             primaryStage.setTitle("Task Manager");
-            primaryStage.setScene(new Scene(root, defaultWidth, defaultHeight));
-            primaryStage.setMinWidth(defaultWidth);
+            primaryStage.setScene(new Scene(root, DEFAULTWIDTH, defaultHeight));
+            primaryStage.setMinWidth(DEFAULTWIDTH);
             primaryStage.setMinHeight(defaultHeight);
             primaryStage.show();
         }

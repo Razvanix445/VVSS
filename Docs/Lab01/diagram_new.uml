@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/Remus/IdeaProjects/VVSS</OriginalElement>
+  <nodes>
+    <node x="585.2604164822482" y="303.87515071096476">tasks.model.ArrayTaskList</node>
+    <node x="-111.64485310890484" y="865.7794037270205">tasks.model.LinkedTaskList.LinkedTaskListIterator</node>
+    <node x="495.68058176691613" y="1300.1637323816558">tasks.validation.TaskValidator</node>
+    <node x="1234.9699469118373" y="0.3411984039774154">tasks.model.Task</node>
+    <node x="847.4960295803553" y="19.59420062275626">tasks.controller.NewEditController</node>
+    <node x="539.6235970943926" y="855.1305130520947">tasks.controller.Controller</node>
+    <node x="1326.6755331236218" y="1270.8942625628845">tasks.model.TaskTest</node>
+    <node x="947.5913108872685" y="840.4704200157786">tasks.services.TasksService</node>
+    <node x="1383.8833567237368" y="822.2550095962597">tasks.services.DateService</node>
+    <node x="612.9322948790473" y="1498.9966396372652">tasks.controller.TaskInfoController</node>
+    <node x="-58.758023934805536" y="1248.8698866009465">tasks.model.LinkedTaskList.Node</node>
+    <node x="176.40724313942445" y="810.0902962196512">tasks.services.TaskIO</node>
+    <node x="290.1964078202953" y="281.3322705961855">tasks.model.LinkedTaskList</node>
+    <node x="402.11397096176654" y="-13.953738969871296">tasks.model.TaskList</node>
+    <node x="169.4252289827195" y="1519.9284883747482">tasks.model.TasksOperations</node>
+    <node x="998.1874027637559" y="1282.443822537758">tasks.controller.Notificator</node>
+    <node x="1102.092488922198" y="1480.985116918977">tasks.model.ArrayTaskList.ArrayTaskListIterator</node>
+    <node x="168.95399295509145" y="1295.2999213773076">tasks.services.DateServiceTest</node>
+    <node x="874.8490977945977" y="1498.2387977261092">tasks.view.Main</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="tasks.model.LinkedTaskList" target="tasks.model.TaskList" relationship="GENERALIZATION">
+      <point x="100.49959217970473" y="-10.83227059618548" />
+      <point x="519.5" y="424.0" />
+      <point x="-0.11397096176654031" y="117.49973896987129" />
+    </edge>
+    <edge source="tasks.model.LinkedTaskList.LinkedTaskListIterator" target="tasks.model.LinkedTaskList" relationship="INNER_CLASS">
+      <point x="111.99985310890484" y="-4.037270205117238E-4" />
+      <point x="141.0" y="934.279" />
+      <point x="141.0" y="434.832" />
+      <point x="-100.50040782029527" y="-2.70596185487193E-4" />
+    </edge>
+    <edge source="tasks.model.LinkedTaskList.Node" target="tasks.model.LinkedTaskList" relationship="INNER_CLASS">
+      <point x="83.50002393480554" y="1.1339905336171796E-4" />
+      <point x="141.0" y="1354.37" />
+      <point x="141.0" y="434.832" />
+      <point x="-100.50040782029527" y="-2.70596185487193E-4" />
+    </edge>
+    <edge source="tasks.model.ArrayTaskList" target="tasks.model.TaskList" relationship="GENERALIZATION">
+      <point x="-100.50041648224817" y="-1.5071096476049206E-4" />
+      <point x="539.0" y="457.375" />
+      <point x="539.0" y="424.0" />
+      <point x="519.5" y="424.0" />
+      <point x="-0.11397096176654031" y="117.49973896987129" />
+    </edge>
+    <edge source="tasks.model.ArrayTaskList.ArrayTaskListIterator" target="tasks.model.ArrayTaskList" relationship="INNER_CLASS">
+      <point x="107.0" y="0.0" />
+      <point x="1731.3833567237368" y="1549.485116918977" />
+      <point x="1731.3833567237368" y="590.8411984039774" />
+      <point x="100.5" y="133.46604769301263" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.5698860227954409" showDependencies="false" x="1137.2494021052635" y="276.13429894736845" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

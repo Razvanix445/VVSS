@@ -16,7 +16,8 @@ public class TaskValidator {
         this.dateService = dateService;
     }
 
-    public boolean validateTaskInput(String title, LocalDate startDate, String startTime,
+    public boolean validateTaskInput(String title,
+                                     LocalDate startDate, String startTime,
                                      LocalDate endDate, String endTime, String interval, boolean isRepeated) {
         StringBuilder errorMessage = new StringBuilder();
 
