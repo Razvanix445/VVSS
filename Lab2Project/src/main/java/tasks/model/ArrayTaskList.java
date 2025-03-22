@@ -61,6 +61,7 @@ public class ArrayTaskList extends TaskList{
         this.tasks[numberOfTasks] = task;
         this.numberOfTasks++;
     }
+
     @Override
     public boolean remove(Task task){
         int indexOfTaskToDelete = -1;
