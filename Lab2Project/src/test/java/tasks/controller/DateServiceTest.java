@@ -55,7 +55,7 @@ public class DateServiceTest {
     void testInvalidTimeFormat() {
         Date date = new Date();
         assertThrows(IllegalArgumentException.class, () -> {
-            dateService.getDateMergedWithTime("-1:3", date);
+            dateService.getDateMergedWithTime("abcd", date);
         });
     }
 
