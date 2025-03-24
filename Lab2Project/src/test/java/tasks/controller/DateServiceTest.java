@@ -1,6 +1,8 @@
 package tasks.controller;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import tasks.model.ArrayTaskList;
 import tasks.services.DateService;
 import tasks.services.TasksService;
@@ -29,19 +31,27 @@ public class DateServiceTest {
 
     // ECP Valid Case 1: Normal time format
     @DisplayName("Test valid time format - ECP")
-    @Test
-    void testValidTimeFormat() {
+    @ParameterizedTest
+    @ValueSource(strings = { "00:00", "12:30", "23:59" })
+    void testValidTimeFormat(String time) {
         Date date = new Date();
-        Date result = dateService.getDateMergedWithTime("08:30", date);
+        Date result = dateService.getDateMergedWithTime(time, date);
+        assertNotNull(result, "Resulting date should not be null");
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(result);
-        assertEquals(8, calendar.get(Calendar.HOUR_OF_DAY));
-        assertEquals(30, calendar.get(Calendar.MINUTE));
+
+        String[] parts = time.split(":");
+        int expectedHour = Integer.parseInt(parts[0]);
+        int expectedMinute = Integer.parseInt(parts[1]);
+
+        assertEquals(expectedHour, calendar.get(Calendar.HOUR_OF_DAY), "Hour should match");
+        assertEquals(expectedMinute, calendar.get(Calendar.MINUTE), "Minute should match");
     }
 
     // ECP Invalid Case 1: Incorrect time format
     @DisplayName("Test invalid time format - ECP")
-    @Test
+    @RepeatedTest(3)
     void testInvalidTimeFormat() {
         Date date = new Date();
         assertThrows(IllegalArgumentException.class, () -> {
@@ -72,6 +82,7 @@ public class DateServiceTest {
     // BVA Valid Case 1: Lower boundary of time
     @DisplayName("Test time at lower boundary - BVA")
     @Test
+    @Tag("BVA")
     void testTimeAtLowerBoundary() {
         Date date = new Date();
         Date result = dateService.getDateMergedWithTime("00:00", date);
