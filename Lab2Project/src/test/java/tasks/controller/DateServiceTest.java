@@ -63,7 +63,11 @@ public class DateServiceTest {
     @DisplayName("Test time exceeds bounds - ECP")
     @Test
     void testTimeExceedsBounds() {
+
+        // ARRANGE
         Date date = new Date();
+
+        //
         assertThrows(IllegalArgumentException.class, () -> {
             dateService.getDateMergedWithTime("25:00", date);
         });
