@@ -138,6 +138,7 @@ public class Controller {
         tasks.setItems(observableTasks);
         updateCountLabel(observableTasks);
     }
+
     private Date getDateFromFilterField(LocalDate localDate, String time){
         Date date = dateService.getDateValueFromLocalDate(localDate);
         return dateService.getDateMergedWithTime(time, date);

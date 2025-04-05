@@ -79,6 +79,7 @@ public class ArrayTaskList extends TaskList{
         }
         return false;
     }
+
     @Override
     public int size(){
         return this.numberOfTasks;

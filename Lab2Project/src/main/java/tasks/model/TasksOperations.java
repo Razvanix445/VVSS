@@ -14,6 +14,20 @@ public class TasksOperations {
     public Iterable<Task> incoming(Date start, Date end){
         System.out.println(start);
         System.out.println(end);
+
+        if (start == null) {
+            System.out.println("Data de start este null!");
+            return new ArrayList<>();
+        }
+        if (end == null) {
+            System.out.println("Data de end este null!");
+            return new ArrayList<>();
+        }
+        if (start.after(end)) {
+            System.out.println("Data de start este după data de end!");
+            return new ArrayList<>();
+        }
+
         ArrayList<Task> incomingTasks = new ArrayList<>();
         for (Task t : tasks) {
             Date nextTime = t.nextTimeAfter(start);
@@ -24,6 +38,7 @@ public class TasksOperations {
         }
         return incomingTasks;
     }
+
     public SortedMap<Date, Set<Task>> calendar( Date start, Date end){
         Iterable<Task> incomingTasks = incoming(start, end);
         TreeMap<Date, Set<Task>> calendar = new TreeMap<>();
