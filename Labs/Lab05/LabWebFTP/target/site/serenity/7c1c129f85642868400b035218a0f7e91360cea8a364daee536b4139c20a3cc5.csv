@@ -1,0 +1,7 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Login empty password test","Login","SUCCESS","2025-04-11T17:44:00.097+03:00[Europe/Athens]","0.0","13.43"
+"Login empty username test","Login","SUCCESS","2025-04-11T17:44:00.687+03:00[Europe/Athens]","0.0","8.67"
+"Login invalid server parameterized test","Login","SUCCESS","2025-04-11T17:44:44.371+03:00[Europe/Athens]","0.0","26.54"
+"Login invalid server test","Login","SUCCESS","2025-04-11T17:44:44.843+03:00[Europe/Athens]","0.0","16.74"
+"Login parameterized test","Login","SUCCESS","2025-04-11T17:45:15.538+03:00[Europe/Athens]","0.0","7.65"
+"Login test","Login","SUCCESS","2025-04-11T17:45:16.052+03:00[Europe/Athens]","0.0","6.82"

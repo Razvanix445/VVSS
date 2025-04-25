@@ -42,7 +42,7 @@ public class WhiteBoxTests {
         Date nextTime = task.nextTimeAfter(currentTime);
 
         // Assert
-        assertNull("Should return null when current equals end", nextTime);
+            assertNull("Should return null when current equals end", nextTime);
     }
 
     /**
