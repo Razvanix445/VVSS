@@ -14,4 +14,9 @@
       <module name="Tasks (2)" target="17" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Tasks" options="-Xlint:all" />
+    </option>
+  </component>
 </project>
