@@ -33,7 +33,7 @@ public class DateServiceTest {
     @DisplayName("Test valid time format - ECP")
     @ParameterizedTest
     @ValueSource(strings = { "00:00", "12:30", "23:59" })
-    void testValidTimeFormat(String time) {
+    void testValidTimeFormatNotTestlink(String time) {
         Date date = new Date();
         Date result = dateService.getDateMergedWithTime(time, date);
         assertNotNull(result, "Resulting date should not be null");
@@ -52,6 +52,31 @@ public class DateServiceTest {
     // ECP Invalid Case 1: Incorrect time format
     @DisplayName("Test invalid time format - ECP")
     @RepeatedTest(3)
+    void testInvalidTimeFormatNotTestlink() {
+        Date date = new Date();
+        assertThrows(IllegalArgumentException.class, () -> {
+            dateService.getDateMergedWithTime("abcd", date);
+        });
+    }
+
+    // ECP Valid Case 1: Normal time format
+    @DisplayName("Test valid time format - ECP")
+    @Test
+    void testValidTimeFormat() {
+        Date date = new Date();
+        Date result = dateService.getDateMergedWithTime("12:30", date);
+        assertNotNull(result, "Resulting date should not be null");
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(result);
+
+        assertEquals(12, calendar.get(Calendar.HOUR_OF_DAY), "Hour should match");
+        assertEquals(30, calendar.get(Calendar.MINUTE), "Minute should match");
+    }
+
+    // ECP Invalid Case 1: Incorrect time format
+    @DisplayName("Test invalid time format - ECP")
+    @Test
     void testInvalidTimeFormat() {
         Date date = new Date();
         assertThrows(IllegalArgumentException.class, () -> {
