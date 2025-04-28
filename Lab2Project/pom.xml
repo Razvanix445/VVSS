@@ -117,6 +117,11 @@
         <configuration>
           <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
           <testFailureIgnore>true</testFailureIgnore>
+          <reportFormat>xml</reportFormat>
+          <useFile>true</useFile>
+          <includes>
+            <include>**/*Test.java</include>
+          </includes>
         </configuration>
       </plugin>
       <plugin>
