@@ -13,18 +13,17 @@ public class EndUserSteps {
     DictionaryPage dictionaryPage;
 
     @Step
-    public void enters(String keyword) {
-        dictionaryPage.enter_keywords(keyword);
+    public void entersUsername(String username) {
+        dictionaryPage.enterUsername(username);
+    }
+    @Step
+    public void entersPassword(String password) {
+        dictionaryPage.enterPassword(password);
     }
 
     @Step
-    public void starts_search() {
-        dictionaryPage.lookup_terms();
-    }
-
-    @Step
-    public void should_see_definition(String definition) {
-        assertThat(dictionaryPage.getDefinitions(), hasItem(containsString(definition)));
+    public void pressLoginButton() {
+        dictionaryPage.pressLoginButton();
     }
 
     @Step
@@ -33,8 +32,50 @@ public class EndUserSteps {
     }
 
     @Step
-    public void looks_for(String term) {
-        enters(term);
-        starts_search();
+    public boolean assertShoppingCartExists(){
+        return dictionaryPage.checkCart();
+    }
+
+    @Step
+    public void addToCart(){
+        dictionaryPage.addToCart();
+    }
+
+    @Step
+    public void login(String username, String password) {
+        entersUsername(username);
+        entersPassword(password);
+        pressLoginButton();
+    }
+
+    @Step
+    public void addToCartStep(){
+        addToCart();
+    }
+
+    @Step
+    public void pressLogoutButton(){
+        dictionaryPage.pressButtonThreePoints();
+        dictionaryPage.pressLogoutButton();
+    }
+
+    @Step
+    public boolean assertLoginButtonAfterLogout(){
+        return dictionaryPage.checkLoginButtonAfterLogout();
+    }
+
+    @Step
+    public void removeFromCart(){
+        dictionaryPage.removeFromCart();
+    }
+
+    @Step
+    public boolean assertButtonAddToCart(){
+        return dictionaryPage.checkAddToCartVisibleButton();
+    }
+
+    @Step
+    public boolean assertButtonChangedRemove(){
+        return dictionaryPage.checkButtonChangedValue();
     }
 }

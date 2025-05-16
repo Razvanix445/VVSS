@@ -1,12 +1,14 @@
 repositories {
-    jcenter()
-    mavenLocal()
+//    jcenter()
+//    mavenLocal()
+    mavenCentral()
 }
 
 buildscript {
     repositories {
-        mavenLocal()
-        jcenter()
+//        mavenLocal()
+        mavenCentral()
+//        jcenter()
     }
     dependencies {
         classpath("net.serenity-bdd:serenity-gradle-plugin:2.3.2")
@@ -18,12 +20,23 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'net.serenity-bdd.aggregator'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 dependencies {
-    compile 'net.serenity-bdd:serenity-core:2.3.2'
-    compile 'net.serenity-bdd:serenity-junit:2.3.2'
-    testCompile('junit:junit:4.12')
+    implementation 'net.serenity-bdd:serenity-core:2.3.2'
+    implementation 'net.serenity-bdd:serenity-junit:2.3.2'
+    testImplementation('junit:junit:4.12')
 }
 gradle.startParameter.continueOnFailure = true
+
+test {
+    useJUnit() // or useJUnitPlatform() if you're using JUnit 5
+
+    jvmArgs += [
+            '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+            '--add-opens', 'java.base/java.lang.reflect=ALL-UNNAMED'
+    ]
+}
